@@ -1,10 +1,10 @@
 extends layout
 
 block content
-	nav
-		ul
-			li Logo
-			li Register
-			li Login
-	h1= title
-	p Welcome to #{title}
+	main
+		.headline
+			h1 Pollster
+			p Create custom polls with live results.
+		.searchbar
+			input(name='search' class='bar' type='text' placeholder='Find a Poll')
+			input(name='submit' class='btn' type='submit' value='Search')

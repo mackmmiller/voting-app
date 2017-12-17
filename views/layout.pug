@@ -1,8 +1,19 @@
 doctype html
 html
-  head
-    title= title
-    link(href='/images/favicon.ico')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		nav
+			ul
+				li
+					a(href='/') Home
+						//img(src='/public/images/polling.png')
+				li 
+					a(href='/signup') Sign up
+				li 
+					a(href='/login') Login
+		block content
+		block foot
+			footer
+				p Developed by #[a(href='http://mackmmiller.com' target="_blank") Mackenzie Miller]
