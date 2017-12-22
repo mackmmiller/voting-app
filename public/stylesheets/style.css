@@ -1,14 +1,20 @@
-html, body {
+html{
 	height: 100%;
-	background: #bdc0a9;
+	box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
 }
 
 body {
+  position: relative;
+  background: #bdc0a9;
   margin: 0;
-  padding: 0;
+  padding-bottom: 6rem;
   font: 26px "Roboto", Helvetica, Arial, sans-serif;
   color: white;
-  overflow: hidden;
+  min-height: 100%;
 }
 
 a {
@@ -20,7 +26,7 @@ nav, footer {
 	background: #0c2f3f;
 }
 
-ul {
+.nav-ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -33,7 +39,7 @@ li {
 	padding: 1em 0.25em;
 }
 
-li:nth-child(1) {
+.home {
 	margin-right: auto;
 }
 
@@ -48,25 +54,14 @@ li a:hover {
 
 main {
 	color: black;
-	padding: 2.5% 2.5%;
-}
-
-main {
-	margin: 0;
+	padding-top: 64px;
+	max-width: 1000px;
+	margin: 0 auto;
 	text-align: center;
 }
 
-.searchbar {
-	width: 50%;
-	margin: auto;
-}
-
-.searchbar .bar {
-	width: 80%;
-}
-
-.searchbar .btn {
-	width: 15%;
+.trending-polls{
+	color: black;
 }
 
 
@@ -76,7 +71,7 @@ footer {
 	left:0;
 	right:0;
 	text-align: center;
-	padding: 0.25em;
+	padding: 1rem;
 }
 
 footer a:hover {

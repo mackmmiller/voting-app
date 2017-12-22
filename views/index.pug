@@ -5,6 +5,39 @@ block content
 		.headline
 			h1 Pollster
 			p Create custom polls with live results.
-		.searchbar
-			input(name='search' class='bar' type='text' placeholder='Find a Poll')
-			input(name='submit' class='btn' type='submit' value='Search')
+		form(method='POST' action='/polls/search' class='col-6 mx-auto')
+			div(class='input-group input-group-lg')
+				input(name='search' type='text' class='form-control' placeholder='Searh for Polls')
+				span.input-group-btn
+					button(class='btn btn-success' type='submit') Search
+		hr(class='col-8 mx-auto')
+		h4 How this works:
+		p In this small polling app you can view, create, and vote on polls. If you'd like to create your own polls you must first make an account (or you may use the 'test' account, name: test, password: test). Below, you'll find some polls that I've created so you can get the feel of things.
+		hr(class='col-8 mx-auto')
+		h4 Featured polls
+		.card-deck
+			.card
+				a(href='polls/vote/5a3d813c6fc67835365f4759' class='trending-polls card-body')
+					h4.card-title Who's your favorite dog?
+					h6.card-subtitle(class='mb-2 text-muted') by Mackenzie
+			.card
+				a(href='polls/vote/5a3d85f29397293936d0493c' class='trending-polls card-body')
+					h4.card-title What's your favorite color?
+					h6.card-subtitle(class='mb-2 text-muted') by Mackenzie
+			.card
+				a(href='polls/vote/5a3d860a9397293936d0493d' class='trending-polls card-body')
+					h4.card-title Where do you live?
+					h6.card-subtitle(class='mb-2 text-muted') by Mackenzie
+		.card-deck(style='padding-top:30px;')
+			.card
+				a(href='polls/vote/5a3d86680b4eea3a567d94d8' class='trending-polls card-body')
+					h4.card-title How long do you sleep each night?
+					h6.card-subtitle(class='mb-2 text-muted') by Mackenzie
+			.card
+				a(href='polls/vote/5a3d867d0b4eea3a567d94d9' class='trending-polls card-body')
+					h4.card-title What kind of pets do you own?
+					h6.card-subtitle(class='mb-2 text-muted') by Mackenzie
+			.card
+				a(href='polls/vote/5a3d86a10b4eea3a567d94da' class='trending-polls card-body')
+					h4.card-title How much water do you drink each day?
+					h6.card-subtitle(class='mb-2 text-muted') by Mackenzie

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	main
+		h1 Poll results for #{poll.title}
+		li Total response: #{poll.option4.responses + poll.option3.responses + poll.option2.responses + poll.option1.responses}
+		li #{poll.option1.name} : #{poll.option1.responses}
+		li #{poll.option2.name} : #{poll.option2.responses}
+		li #{poll.option3.name} : #{poll.option3.responses}
+		li #{poll.option4.name} : #{poll.option4.responses}

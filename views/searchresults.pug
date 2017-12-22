@@ -1,4 +1,13 @@
 extends layout
 
 block content
-	p Showing results for:
+	main
+		div(class='container col-6 mx-auto')
+			p Showing results for: #{search}
+
+			ul
+				each result in polls
+					li(class='row')
+						a(href=result.url) #{result.title}
+				else
+					li There are no results for #{search}

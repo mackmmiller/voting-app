@@ -1,11 +1,20 @@
 extends layout
 
 block content
-	form(method="post")
-		label(for="username") Username
-		input(name="name" type="text")
-		label(for="email") Email
-		input(name="email" type="text")
-		label(for="password") Password
-		input(name="password" type="text")
-		input(name="submit" type="submit")
+	main
+		h1 Sign up
+		
+		if (message.length > 0)
+			div(class='col-6 mx-auto alert alert-danger') #{message}
+
+		form(method="post" action='' class='col-4 mx-auto')
+			div(class='form-group row')
+				label(for="name") Name
+				input(class='form-control' name="name" type="text")
+			div(class='form-group row')
+				label(for="password") Password
+				input(class='form-control' name="password" type="password")
+			div(class='form-group row')
+				label(for="password2") Confirm Password
+				input(class='form-control' name="password2" type="password")
+			input(name="submit" class='btn btn-primary' type="submit")

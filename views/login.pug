@@ -1,8 +1,17 @@
 extends layout
 
 block content
-	label(for='userName') User Name
-	input(name='userName' type='text' placeholder='User Name')
-	label(for='password') Password
-	input(name='password' type='password' placeholder='Password')
-	input(type='submit' value='Login')
+	main
+		h1 Log In
+
+		if (message.length > 0)
+			div(class='alert alert-danger') #{message}
+
+		form(class='col-4 mx-auto' method='POST' action='')
+			div(class='form-group row')
+				label(for='userName') Name
+				input(class='form-control' name='name' type='text')
+			div(class='form-group row')
+				label(for='password') Password
+				input(class='form-control' name='password' type='password')
+			input(type='submit' class='btn btn-primary' value='Login')

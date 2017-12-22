@@ -1,47 +1,61 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var dotenv = require('dotenv').config();
+// Set up =====================================================================
+var express          = require('express');
+var path             = require('path');
+var favicon          = require('serve-favicon');
+var logger           = require('morgan');
+var cookieParser     = require('cookie-parser');
+var bodyParser       = require('body-parser');
+var expressValidator = require('express-validator');
+var mongoose         = require('mongoose');
+var passport         = require('passport');
+var flash            = require('connect-flash');
+var session          = require('express-session');
+var compression      = require('compression');
+var helmet           = require('helmet');
 
-var index = require('./routes/index');
-//var users = require('./routes/users');
-var signup = require('./routes/signup');
-var login = require('./routes/login');
-var searchresults = require('./routes/searchresults');
+var configDB         = require('./config/database.js');
 
-var app = express();
-
-// Set up mongoose connection
-var mongoose = require('mongoose');
-var url = process.env.MONGOLAB_URI;
-mongoose.connect(url, {
-	useMongoClient: true,
-  user: process.env.MONGOLAB_USER,
-  pass: process.env.MONGOLAB_PASS
+// Configuration ==============================================================
+mongoose.connect(configDB.url, {
+  useMongoClient: true,
+  user: configDB.user,
+  pass: configDB.pass
 });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+require('./config/passport')(passport);
+
+var index = require('./routes/index');
+var users = require('./routes/users');
+var polls = require('./routes/polls');
+
+var app = express();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(helmet());
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator());
 app.use(cookieParser());
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// required for passport
+app.use(session({ secret: 'findingdory' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 app.use('/', index);
-//app.use('/users', users);
-app.use('/signup', signup);
-app.use('/login', login);
-app.use('/search', searchresults);
+app.use('/users', users);
+app.use('/polls', polls);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

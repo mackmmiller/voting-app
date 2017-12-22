@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	main
+		.card(class='col-6 mx-auto')
+			form(class='card-body' method='POST' action='')
+				.card-header
+					h1.card-title #{pollData.title}
+					a(href=pollData.author.url style='color: blue;') by<br>#{pollData.author.name}
+				.form-check
+					label(class='custom-control custom-radio')
+						input(type='radio' class='custom-control-input' name='pollResponse' value=pollData.option1)
+						span.custom-control-indicator
+						span.custom-control-description #{pollData.option1.name}
+				.form-check
+					label(class='custom-control custom-radio')
+						input(type='radio' class='custom-control-input' name='pollResponse' value=pollData.option2)
+						span.custom-control-indicator
+						span.custom-control-description #{pollData.option2.name}
+				.form-check
+					label(class='custom-control custom-radio')
+						input(type='radio' class='custom-control-input' name='pollResponse' value=pollData.option3)
+						span.custom-control-indicator
+						span.custom-control-description #{pollData.option3.name}
+				.form-check
+					label(class='custom-control custom-radio')
+						input(type='radio' class='custom-control-input' name='pollResponse' value=pollData.option4)
+						span.custom-control-indicator
+						span.custom-control-description #{pollData.option4.name}
+				.card-footer
+					input(type='submit' class='btn btn-primary' value='Submit' action='')
+					a(href='/polls/vote/'+pollData.id+'/results' class='btn btn-info') View Results

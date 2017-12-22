@@ -2,17 +2,28 @@ doctype html
 html
 	head
 		title= title
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
 		link(rel='stylesheet', href='/stylesheets/style.css')
+		<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
 	body
 		nav
-			ul
+			ul.nav-ul
+				li.home
+					a(href='/')
+						i(class='fas fa-home')
+				li 
+					if user
+						a(href='/users/profile') Hi #{user}
+					else	
+						a(href='/users/signup') Sign up
 				li
-					a(href='/') Home
-						//img(src='/public/images/polling.png')
-				li 
-					a(href='/signup') Sign up
-				li 
-					a(href='/login') Login
+					if user
+						a(href='/users/logout') Log Out
+					else
+						a(href='/users/login') Login
+				
+					
+
 		block content
 		block foot
 			footer
